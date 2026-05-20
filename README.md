@@ -1,4 +1,4 @@
-# ESM-Atlas: SAE Feature Disruption Scoring for LoF Variants
+# ESM C SAE Feature Disruption Scoring for LoF Variants
 
 This repository contains a pipeline that curates experimentally validated human loss-of-function (LoF) missense variants from UniProt, builds matched benign controls, runs every variant through the ESM Cambrian 6B (ESMC-6B) Sparse Autoencoder (SAE), and scores how much each substitution disrupts the learned feature representation. The central question: **do SAE features learned from protein sequences recover the functional mechanism of LoF mutations?**
 
