@@ -1,0 +1,83 @@
+
+============================================================
+DATASET QC SUMMARY
+============================================================
+
+Total variants: 8205
+Unique proteins: 2181
+Unique genes: 2181
+
+--- Variants by label ---
+label
+benign_control    3921
+nearby_control    2977
+LoF_like          1307
+
+--- Variants by source ---
+source
+CLINVAR_BENIGN                           3921
+ALPHAMISSENSE_BENIGN                     2977
+UNIPROT_MUTAGENESIS_LOF_EVIDENCE_TEXT    1307
+
+--- Variants by mechanism_tag ---
+mechanism_tag
+benign_control              3921
+nearby_control              2977
+binding_LoF                  575
+catalytic_LoF                446
+regulatory_LoF               232
+domain_or_motif_LoF           50
+structural_stability_LoF       3
+metal_binding_LoF              1
+
+--- Label confidence ---
+label_confidence
+high      7923
+medium     282
+
+--- Positive/negative ratio ---
+Positives: 1307, Negatives: 6898, Ratio: 1:5.3
+
+--- Positives by mechanism_tag ---
+mechanism_tag
+binding_LoF                 575
+catalytic_LoF               446
+regulatory_LoF              232
+domain_or_motif_LoF          50
+structural_stability_LoF      3
+metal_binding_LoF             1
+
+--- Protein length distribution (positives) ---
+  min=24, median=475, max=2549, mean=590
+
+--- Unique proteins in positive set: top genes ---
+gene
+SLC18A2    23
+BANF1      12
+WIPI1      11
+VIL1       10
+IL6R       10
+EIF4G1     10
+MEF2C       9
+DNASE2      9
+CXCR3       9
+TRB         9
+DSE         9
+FUT9        8
+TET2        8
+CD209       8
+RTN4R       8
+LPL         8
+DNM1L       8
+NEU3        8
+ALKBH5      7
+RAD9A       7
+
+--- Nearby controls: distance summary ---
+  min dist=10, median=16, max=185
+
+--- QC Issues ---
+  No issues found!
+
+Total issues: 0
+Variants passing QC: 8205

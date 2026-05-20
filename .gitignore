@@ -1,0 +1,26 @@
+# personal path config — never commit
+scripts/config.env
+
+# pipeline data and results (large files, cluster-specific paths)
+data/raw/
+results/
+results_evidence_text/
+
+# committed data: curated variant tables are tracked
+!data/
+!data/variants_with_evidence_text/
+!data/variants_with_evidence_text/**
+
+# SLURM job logs
+logs/
+*.out
+*.err
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
