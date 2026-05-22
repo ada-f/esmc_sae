@@ -9,19 +9,15 @@ could explain *why* a mutation is damaging, not just predict *that* it is.
 
 This report tests the prerequisite for that use. The question is:
 
-> When a mutation alters a protein, do its SAE features change in a way that
-> (a) tracks the mutation's measured functional effect, and (b) points to the
-> protein's known functional sites?
+> When a mutation alters a protein, do its SAE features change in a way that tracks the mutation's measured functional effect?
 
 We test this on KRAS because a deep mutational scanning (DMS) study measured
 the functional effect of nearly every possible single amino-acid substitution
-across one folding readout and six binding readouts — a dense, quantitative
-ground truth to compare the SAE against.
+across one folding readout and six binding readouts.
 
 The analysis is organised as two validations of increasing resolution:
 
-1. **Validation 1** — across all substitutions, does the *size* of the SAE
-   disruption track the measured functional effect?
+1. **Validation 1** — across all substitutions, does the SAE feature reduction track the measured functional effect?
 2. **Validation 2** — at the mutational hotspots, *which* SAE features are most
    disrupted, and do they match the local biology?
 
@@ -55,8 +51,7 @@ autoencoder trained on the model's layer-60 representations then decomposed
 each variant's embedding into 16,384 sparse feature activations. The wild-type
 sequence was processed the same way, giving a wild-type feature vector.
 
-The core quantity throughout this report is the **feature drop** — the
-activation a mutation *removes* from a feature:
+We quantify the activation a mutation *removes* from a feature with *feature drop* — :
 
 ```
 drop(feature f) = max(0, activation_wild-type(f) − activation_mutant(f))
@@ -201,7 +196,7 @@ and `callouts_descriptive_<assay>.png` (most-disrupted features, no test).
 
 ## 5. Limitations and notes
 
-**The result is a foundation, not a mechanism.** Validation 1 shows the SAE
+**The result is an association, not a mechanism.** Validation 1 shows the SAE
 responds to disruptiveness; Validation 2 shows the disrupted features are the
 biologically right ones. Neither shows that the SAE distinguishes *mechanisms*
 (for example, a fold-destabilising mutation from a binding-interface mutation)
