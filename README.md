@@ -78,14 +78,18 @@ Given a protein (UniProt accession or gene symbol) and a variant (e.g. `R175H`),
 
 The Forge API costs 2 credits per variant (ref + mut). If the reference protein is already cached locally in `results/activations/ref_cache/{accession}.npz`, only 1 credit is consumed.
 
-### Proof-of-Concept Evaluation
+### Blinded Evaluation (100 Variants, 42 Proteins)
 
-We ran a blinded experiment on 10 LoF variants from `positive_tier1.tsv`, comparing agents with and without SAE feature access. Ground-truth UniProt evidence text was withheld from the agent at all times.
+We ran a blinded experiment on 100 LoF variants from `positive_tier1.tsv`, spanning 42 proteins across catalytic, binding, PTM, structural stability, and multi-partner mechanisms. Ground-truth UniProt evidence text was withheld from the agent at all times.
 
-**Mean mechanism-identification scores (1–5 scale):** With SAE: **4.5**, Without SAE: **4.2**  
-**Blind pairwise judge wins:** Without SAE: 6/10, With SAE: 4/10
+**Mean mechanism-identification scores (1–5 scale):** With SAE: **3.83**, Without SAE: **3.76**  
+**Blind pairwise judge wins:** With SAE: 50/100, Without SAE: 50/100  
+**High-confidence judge wins:** With SAE: **14/22**, Without SAE: 8/22
 
-Preliminary evidence suggests SAE features are most useful for PTM and subcellular localisation mechanisms, where standard structure-based tools provide weak evidence and the SAE has learned dedicated feature detectors (e.g., Feature 16076 for N-glycosylation sequons, Feature 15254 for phospholipid-binding domains). For well-characterised catalytic mechanisms, sequence-based reasoning alone is often sufficient or superior.
+The benefit of SAE features is mechanism-dependent rather than uniform:
+
+- **SAE most useful** for multi-partner binding mechanisms where the functional surface is hard to infer from sequence alone (e.g., BANF1/BAF nuclear lamina scaffold: 10/12 judge wins, +0.59 mean score improvement over no-SAE baseline) and for histone reader aromatic cage recognition.
+- **SAE neutral or harmful** for SUMOylation in disordered linkers (generic IDR phosphorylation features mask the SUMOylation signal; DRP1 K→R variants: 1/8 judge wins, −0.88 mean score) and for well-characterised direct-contact mechanisms where sequence context is sufficient (eIF4E m7G-cap stacking: SAE adds noise without improving accuracy).
 
 Full write-up with per-variant scores and case analysis: `reports/agent_variant_effects.md`
 
